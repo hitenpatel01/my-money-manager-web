@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+
+@mixin m3-footer-theme($theme) {
+    $primary: map-get($theme, primary);
+    .m3-footer {
+        background: mat-color($primary);
+        color: mat-color($primary, default-contrast);
+    }
+}

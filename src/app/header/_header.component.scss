@@ -1,0 +1,13 @@
+@import '~@angular/material/theming';
+
+@mixin m3-header-theme($theme) {
+    $primary: map-get($theme, primary);
+    $foreground: map-get($theme, foreground);
+    a {
+        color: mat-color($primary, default-contrast);
+    }
+    #themeToggle {
+        color: mat-color($foreground, text);
+        display: block;
+    }
+}

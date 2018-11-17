@@ -1,0 +1,6 @@
+@import '~@angular/material/theming';
+
+@mixin navigation-theme($theme) {
+    $background: map-get($theme, primary);
+    //TODO: add navigation theme here...
+}

@@ -1,0 +1,45 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+@import 'theme';
+@import 'app/app.component';
+@import 'app/header/header.component';
+@import 'app/footer/footer.component';
+@import 'app/navigation/navigation.component';
+
+@mixin input-focus-blur-theme($theme) {
+    $background: map-get($theme, accent);    
+    input:focus {
+        background-color: mat-color($background, A100);
+    }
+    input:blue {
+        background-color: inherit;
+    }
+}
+
+@mixin component-theme($theme) {
+    @include m3-app-theme($theme);
+    @include m3-header-theme($theme);
+    @include m3-footer-theme($theme);
+    @include navigation-theme($theme);
+    @include input-focus-blur-theme($theme);
+}
+
+.m3-light-theme {
+    @include angular-material-theme($light-app-theme);
+    @include component-theme($light-app-theme);
+}
+
+.m3-dark-theme {
+    @include angular-material-theme($dark-app-theme);
+    @include component-theme($dark-app-theme);
+}
+
+body { 
+    font-family: Roboto, Arial, sans-serif;
+    margin: 0;
+}
+
+// .basic-container {
+//     padding: 30px;
+// }

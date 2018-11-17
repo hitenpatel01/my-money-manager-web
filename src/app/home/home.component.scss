@@ -1,0 +1,13 @@
+@import '~@angular/material/theming';
+.light-logo {
+    filter: invert(100%);
+}
+.home-container {
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    height: 100%;
+    @media screen and ($mat-xsmall) {
+        flex-direction: column
+    }
+}

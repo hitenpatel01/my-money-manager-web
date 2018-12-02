@@ -35,11 +35,11 @@
     @include component-theme($dark-app-theme);
 }
 
+html {
+    height: 100%;
+}
 body { 
+    height: 100%;
     font-family: Roboto, Arial, sans-serif;
     margin: 0;
 }
-
-// .basic-container {
-//     padding: 30px;
-// }

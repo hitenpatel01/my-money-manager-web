@@ -1,6 +1,9 @@
 .m3-footer {
     padding: 8px;
     display: flex;
+    position: relative;
+    box-shadow: 0 -2px 5px 0 rgba(0,0,0,.3);
+    z-index: 2;
     a {
         text-decoration: none;
     }

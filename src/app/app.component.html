@@ -1,16 +1,12 @@
-<div [ngClass]="themeClass">
-  <mat-sidenav-container class="container">
-    <mat-sidenav #sidenav [mode]="over" class="sidenav">
+<div class="appContainer" [ngClass]="themeClass">
+  <m3-header #header (menuClick)="sidenav.toggle()"></m3-header>
+  <mat-sidenav-container class="sideNavContainer">
+    <mat-sidenav #sidenav mode="side" class="sideNav" opened>
       <m3-navigation></m3-navigation>
     </mat-sidenav>
-    <mat-sidenav-content>
-      <div style="display: flex; flex-direction: column">
-        <m3-header #header (menuClick)="sidenav.toggle()"></m3-header>
-        <div style="height: calc(100vh - 64px - 36px)">
-          <router-outlet></router-outlet>
-        </div>
-        <m3-footer></m3-footer>
-      </div>
+    <mat-sidenav-content class="sideNavContent">
+        <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
+  <m3-footer></m3-footer>
 </div>

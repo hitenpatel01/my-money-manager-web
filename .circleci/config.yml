@@ -26,7 +26,24 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: yarn install
+      - run: 
+          name: Restore Packages
+          command: npm install
+
+      - run:
+          name: Install ng cli
+          command: sudo npm install @angular/cli -g
+
+      - run: 
+          name: Build Project
+          command: ng build --prod --aot
+
+      # - store_artifacts:
+      #     path: ~/repo/dist/my-money-manager
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist/my-money-manager
 
       - save_cache:
           paths:
@@ -36,3 +53,27 @@ jobs:
       # run tests!
       # TODO: disabling unit tests temporarily.
       #- run: yarn test
+  deploy:
+    docker:
+      - image: circleci/node:11-browsers
+    working_directory: ~/repo
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Install awscli
+          command: sudo apt-get install awscli
+      - run:
+          name: Deploy to S3
+          command: aws s3 sync ~/repo/dist/my-money-manager s3://m3-web/ --delete --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master

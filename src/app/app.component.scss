@@ -1,11 +1,11 @@
-.appContainer {
+.app-container {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
-.sideNavContainer {
+.side-nav-container {
     flex: 1;
 }
-mat-sidenav.sideNav {
+mat-sidenav.side-nav {
     box-shadow: 6px 0 6px rgba(0,0,0,.1);
 }

@@ -1,10 +1,10 @@
-<div class="appContainer" [ngClass]="themeClass">
-  <m3-header #header (menuClick)="sidenav.toggle()"></m3-header>
-  <mat-sidenav-container class="sideNavContainer">
-    <mat-sidenav #sidenav mode="side" class="sideNav" opened>
+<div class="app-container" [ngClass]="themeClass">
+  <m3-header #header (menuClick)="sideNav.toggle()"></m3-header>
+  <mat-sidenav-container class="side-nav-container">
+    <mat-sidenav #sideNav [mode]="sideNavMode" class="side-nav" [opened]="isOpened">
       <m3-navigation></m3-navigation>
     </mat-sidenav>
-    <mat-sidenav-content class="sideNavContent">
+    <mat-sidenav-content class="side-nav-content">
         <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>

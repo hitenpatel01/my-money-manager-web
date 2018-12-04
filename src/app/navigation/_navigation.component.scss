@@ -2,5 +2,4 @@
 
 @mixin navigation-theme($theme) {
     $background: map-get($theme, primary);
-    //TODO: add navigation theme here...
 }

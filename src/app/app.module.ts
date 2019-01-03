@@ -16,6 +16,8 @@ import { SearchResultComponent } from './search-result/search-result.component';
 import { CoreModule } from './core/core.module';
 import { SettingsModule } from './settings/settings.module';
 import { SettingsService } from './settings/settings.service';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { SettingsService } from './settings/settings.service';
     SearchResultComponent
   ],
   imports: [
+    HttpClientModule,
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,

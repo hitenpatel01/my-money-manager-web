@@ -1,2 +1,13 @@
 <input #search id="search" type="Search" placeholder="Search" title="Enter symbol name to search" accesskey="s"
-  (keyup.enter)="onSearch(search.value)">
+  [matAutocomplete]="symbolAutoComplete" (keyup.enter)="onSearch(search.value)" (input)="onChange(search.value)" (change)="onChange(search.value)">
+<mat-autocomplete class="test" #symbolAutoComplete="matAutocomplete" [class]="{'test': true}" [classList]="'test'"
+  [panelWidth]="'auto'" style="left: unset; right: 0">
+  <mat-option *ngFor="let symbol of filteredSymbols | async" [value]="symbol.symbol">
+    <div style="line-height: 16px">
+      <!-- <span style="display: inline-block; vertical-align: text-top; line-height: 16px">{{symbol.symbol}}</span>
+      <span style="margin-left: 8px; display: inline-block; line-height: 16px; white-space: normal">{{symbol.name}}</span> -->
+      <span style="display: inline-block; vertical-align: top">{{symbol.symbol}}</span>
+      <span style="display: inline-block; margin-left: 16px; white-space: normal">{{symbol.name}}</span>
+    </div>
+  </mat-option>
+</mat-autocomplete>

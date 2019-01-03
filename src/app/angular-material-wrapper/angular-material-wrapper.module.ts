@@ -15,18 +15,18 @@ import {
 } from '@angular/material';
 
 const modules = [
-  MatAutocompleteModule
-  , MatButtonModule
-  , MatCardModule
-  , MatDatepickerModule
-  , MatChipsModule
-  , MatFormFieldModule
-  , MatIconModule
-  , MatInputModule
-  , MatMenuModule
-  , MatSidenavModule
-  , MatSlideToggleModule
-  , MatToolbarModule
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatCardModule,
+  MatDatepickerModule,
+  MatChipsModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatMenuModule,
+  MatSidenavModule,
+  MatSlideToggleModule,
+  MatToolbarModule,
 ];
 
 @NgModule({

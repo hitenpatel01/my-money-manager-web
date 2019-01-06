@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
     });
 
     this.breakpointObserver
-      .observe([Breakpoints.Small, Breakpoints.HandsetPortrait])
+      .observe([Breakpoints.HandsetPortrait])
       .subscribe((state: BreakpointState) => {
         this.sideNavMode = state.matches ? 'over' : 'side';
         this.isOpened = state.matches ? false : true;

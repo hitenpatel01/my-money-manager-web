@@ -38,13 +38,13 @@ export class SearchInputComponent implements OnInit {
   onSearch(searchTerm: string) {
     this._router.navigateByUrl(`/search?term=${searchTerm}`);
   }
-  onChange(symbol: string) {
-    if(symbol.length === 0) {
+  onChange(searchTerm: string) {
+    if (searchTerm.length === 0) {
       this.filteredSymbols.next(null);
-    }  
-    if(symbol.length < 3) return;
-    const symbolVaue = symbol.toUpperCase();
-    this.filteredSymbols.next(this._symbols.filter(symbol => symbol.symbol.indexOf(symbolVaue) >= 0));
+    }
+    if (searchTerm.length < 3) return;
+    const capitalizedSearchTerm = searchTerm.toUpperCase();
+    this.filteredSymbols.next(this._symbols.filter(symbol => symbol.symbol.indexOf(capitalizedSearchTerm) >= 0 || symbol.name.toUpperCase().indexOf(capitalizedSearchTerm) >= 0));
   }
 
 }

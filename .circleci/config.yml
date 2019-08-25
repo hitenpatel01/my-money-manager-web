@@ -32,7 +32,7 @@ jobs:
 
       - run:
           name: Install ng cli
-          command: sudo npm install @angular/cli -g
+          command: sudo npm install @angular/cli -g > /dev/null
 
       - run: 
           name: Build Project

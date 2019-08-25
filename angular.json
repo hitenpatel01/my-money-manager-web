@@ -65,7 +65,6 @@
             "browserTarget": "my-money-manager:build"
           },
           "configurations": {
-
             "production": {
               "browserTarget": "my-money-manager:build:production"
             },
@@ -140,5 +139,8 @@
       }
     }
   },
-  "defaultProject": "my-money-manager"
+  "defaultProject": "my-money-manager",
+  "cli": {
+    "analytics": false
+  }
 }

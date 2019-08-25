@@ -1,4 +1,4 @@
-<input #search id="search" type="Search" placeholder="Search" title="Enter symbol name to search" accesskey="s"
+<input #search id="search" type="Search" placeholder="Symbol" title="Enter symbol name to search" accesskey="s"
   [matAutocomplete]="symbolAutoComplete" (keyup.enter)="onSearch(search.value)" (input)="onChange(search.value)"
   (change)="onChange(search.value)">
 <mat-autocomplete class="test" #symbolAutoComplete="matAutocomplete" [panelWidth]="'auto'">

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { MatAutocomplete } from '@angular/material/autocomplete';
 
 export interface Symbol {
   symbol: string;
@@ -42,9 +43,12 @@ export class SearchInputComponent implements OnInit {
     if (searchTerm.length === 0) {
       this.filteredSymbols.next(null);
     }
-    if (searchTerm.length < 3) return;
+    if (searchTerm.length < 3) {
+      return;
+    }
     const capitalizedSearchTerm = searchTerm.toUpperCase();
-    this.filteredSymbols.next(this._symbols.filter(symbol => symbol.symbol.indexOf(capitalizedSearchTerm) >= 0 || symbol.name.toUpperCase().indexOf(capitalizedSearchTerm) >= 0));
+    this.filteredSymbols.next(
+      this._symbols.filter(symbol => symbol.symbol.indexOf(capitalizedSearchTerm) >= 0
+        || symbol.name.toUpperCase().indexOf(capitalizedSearchTerm) >= 0));
   }
-
 }

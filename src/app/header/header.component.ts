@@ -1,5 +1,7 @@
 import { Component, Output, EventEmitter, Input, ViewChild, ElementRef } from '@angular/core';
-import { MatMenu, MatSlideToggle, MatButton } from '@angular/material';
+import { MatButton } from '@angular/material/button';
+import { MatMenu } from '@angular/material/menu';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { SettingsService } from '../settings/settings.service';
 import { Setting } from '../settings/settings.model';
 

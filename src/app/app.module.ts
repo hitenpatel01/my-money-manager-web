@@ -16,7 +16,6 @@ import { NavigationComponent } from './site/navigation/navigation.component';
 import { FooterComponent } from './site/footer/footer.component';
 
 import { CoreModule } from './core/core.module';
-import { AboutaboutComponent } from './aboutabout/aboutabout.component';
 import { AboutComponent } from './about/about/about.component';
 import { PrivacyComponent } from './privacy/privacy/privacy.component';
 
@@ -28,7 +27,6 @@ import { PrivacyComponent } from './privacy/privacy/privacy.component';
     HeaderComponent,
     NavigationComponent,
     FooterComponent,
-    AboutaboutComponent,
     AboutComponent,
     PrivacyComponent
   ],

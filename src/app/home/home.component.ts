@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import { SettingsService } from '../settings/settings.service';
+import { SettingsService } from '../core/settings/settings.service';
 import { Subscription } from 'rxjs';
-import { SettingChangeEvent, Setting } from '../settings/settings.model';
+import { SettingChangeEvent, Setting, Theme } from '../core/settings/settings.model';
 
 @Component({
   selector: 'm3-home',
@@ -13,10 +13,10 @@ export class HomeComponent implements OnInit {
   isDarkTheme;
   constructor(private _settingsService: SettingsService) { }
   ngOnInit() {
-    this.isDarkTheme = this._settingsService.getSetting(Setting.DarkTheme);
+    this.isDarkTheme = this._settingsService.getSetting(Setting.Theme) === Theme.Dark;
     this._settingsSubscription = this._settingsService.change.subscribe((event: SettingChangeEvent) => {
-      if (event.name === Setting.DarkTheme) {
-        this.isDarkTheme = event.value;
+      if (event.name === Setting.Theme) {
+        this.isDarkTheme = event.value === Theme.Dark;
       }
     });
   }

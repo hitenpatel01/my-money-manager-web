@@ -5,7 +5,10 @@
 export const environment = {
   production: false,
   hmr: false,
-  darkTheme: false
+  darkTheme: false,
+  urls: {
+    marketData: 'http://localhost:9001/getMarketData/'
+  }
 };
 
 /*

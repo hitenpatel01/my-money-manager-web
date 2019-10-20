@@ -3,7 +3,7 @@
 @mixin m3-header-theme($theme) {
     $primary: map-get($theme, primary);
     $foreground: map-get($theme, foreground);
-    a {
+    .app-name {
         color: mat-color($primary, default-contrast);
     }
     #themeToggle {

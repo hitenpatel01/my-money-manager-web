@@ -1,13 +1,14 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/layout';
-import { environment } from '../environments/environment';
-import { SettingsService } from './settings/settings.service';
+import { SettingsService } from './core/settings/settings.service';
 import { Subscription } from 'rxjs';
-import { SettingChangeEvent, Setting } from './settings/settings.model';
+import { SettingChangeEvent, Setting, Theme } from './core/settings/settings.model';
 
-const LightThemeClass = 'm3-light-theme';
-const DarkThemeClass = 'm3-dark-theme'
+enum ThemeClass {
+  Light = 'm3-light-theme',
+  Dark = 'm3-dark-theme'
+}
 
 @Component({
   selector: 'm3-root',
@@ -20,14 +21,14 @@ export class AppComponent implements OnInit {
   sideNavMode;
   isOpened;
   private _settingsSubscription: Subscription;
-  constructor(private _settingsService: SettingsService, 
+  constructor(private _settingsService: SettingsService,
     private _overlayContainer: OverlayContainer, public breakpointObserver: BreakpointObserver) { }
   ngOnInit() {
-    this._changeTheme(this._settingsService.getSetting(Setting.DarkTheme));
+    this._setTheme(this._settingsService.getSetting(Setting.Theme));
 
     this._settingsSubscription = this._settingsService.change.subscribe((event: SettingChangeEvent) => {
-      if(event.name === Setting.DarkTheme){
-        this._changeTheme(event.value)
+      if (event.name === Setting.Theme) {
+        this._setTheme(event.value);
       }
     });
 
@@ -43,8 +44,8 @@ export class AppComponent implements OnInit {
         }
       });
   }
-  private _changeTheme(toggle: boolean) {
-    this.themeClass  = toggle ? DarkThemeClass : LightThemeClass;
+  private _setTheme(theme: Theme) {
+    this.themeClass = ThemeClass[theme];
     this._updateOverlayContainerClass();
   }
   private _updateOverlayContainerClass() {

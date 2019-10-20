@@ -5,5 +5,8 @@
     .m3-footer {
         background: mat-color($primary);
         color: mat-color($primary, default-contrast);
+        a {
+            color: mat-color($primary, default-contrast);
+        }
     }
 }

@@ -3,9 +3,9 @@
 
 @import 'theme';
 @import 'app/app.component';
-@import 'app/header/header.component';
-@import 'app/footer/footer.component';
-@import 'app/navigation/navigation.component';
+@import 'app/site/header/header.component';
+@import 'app/site/footer/footer.component';
+@import 'app/site/navigation/navigation.component';
 
 @mixin input-focus-blur-theme($theme) {
     $background: map-get($theme, accent);    

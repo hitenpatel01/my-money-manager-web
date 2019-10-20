@@ -1,0 +1,66 @@
+.menu {
+    width: 180px;
+}
+.menu nav {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 23px 9px;
+    background: rgba(0, 0, 0, 0.04);
+}
+.menu nav .nav-title {
+    font-size: 13px;
+    font-weight: 500;
+}
+.menu nav .nav-value {
+    font-size: 17px;
+    font-weight: 400;
+    a {
+        width: 100%;
+        display: block;
+        text-decoration: none;
+        mat-icon {
+            height: auto;
+            width: auto;
+            font-size: 17px;
+            position: absolute;
+            right: 9px;
+            line-height: 20px;
+        }
+    }
+}
+// .menu nav button {
+//     padding: 9px 18px;
+//     font-weight: 700;
+//     line-height: 18px;
+//     margin: 0;
+//     font-size: 13px;
+//     cursor: pointer;
+//     position: relative;
+//     display: block;
+//     width: 100%;
+//     text-align: left;
+//     background: 0 0;
+//     border: none;
+// }
+// .menu nav button mat-icon {
+//     position: absolute;
+//     right: 9px;
+//     font-size: 18px;
+// }
+// .menu nav ul {
+//     list-style-type: none;
+//     margin: 0 0 9px;
+//     padding: 0;
+//     overflow: hidden;
+// }
+// .menu nav ul li {
+//     font-size: 13px;
+//     line-height: 18px;
+//     margin: 0;
+//     padding: 9px 27px;
+// }
+// .menu nav ul li a {
+//     text-decoration: none;
+// }
+// .menu-label {
+//     margin-left: 10px;
+// }

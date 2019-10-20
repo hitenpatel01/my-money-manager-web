@@ -1,21 +1,23 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { BaseService } from '../core/base-service.service';
-import { SettingData, SettingChangeEvent, Setting } from './settings.model';
+import { BaseService } from '../base-service/base-service.service';
+import { SettingChangeEvent, Setting, Theme } from './settings.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SettingsService extends BaseService {
-  private _data: SettingData;
+  private _data: {
+    [name: string]: any;
+  };
   public change: EventEmitter<SettingChangeEvent>;
   constructor() {
     super();
 
-    //Initialize data
-    //TODO: load initial values from configuration or local storage
+    // Initialize data
+    // TODO: load initial values from configuration or local storage
     this._data = {};
-    this._data[Setting.DarkTheme] = false;
-    
+    this._data[Setting.Theme] = Theme.Light;
+
     this.change = new EventEmitter();
   }
   getSetting(name: Setting) {
@@ -23,6 +25,6 @@ export class SettingsService extends BaseService {
   }
   setSetting(name: Setting, value: any) {
     this._data[name] = value;
-    this.change.emit({ name, value })
+    this.change.emit({ name, value });
   }
 }

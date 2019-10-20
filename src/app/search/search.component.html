@@ -2,9 +2,9 @@
   [matAutocomplete]="symbolAutoComplete" (keyup.enter)="onSearch(search.value)" (input)="onChange(search.value)"
   (change)="onChange(search.value)">
 <mat-autocomplete class="test" #symbolAutoComplete="matAutocomplete" [panelWidth]="'auto'">
-  <mat-option *ngFor="let symbol of filteredSymbols | async" [value]="symbol.symbol">
-    <span style="display: inline-block; width: 55px">{{symbol.symbol}}</span>
-    <span>{{symbol.name}}</span>
+  <mat-option *ngFor="let stock of filteredStocks | async" [value]="stock.symbol">
+    <span style="display: inline-block; width: 55px">{{stock.symbol}}</span>
+    <span>{{stock.name}}</span>
     <!-- <div style="line-height: 16px">
       <span style="display: inline-block; vertical-align: top">{{symbol.symbol}}</span>
       <span style="display: inline-block; margin-left: 16px; white-space: normal">{{symbol.name}}</span>

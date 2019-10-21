@@ -1,10 +1,10 @@
 export interface Stock {
     symbol: string;
-    exchange: string;
+    // exchange: string;
     name: string;
-    date: Date;
+    // date: Date;
     type: string;
-    region: string;
-    currency: string;
-    isEnabled: boolean;
+    // region: string;
+    // currency: string;
+    // isEnabled: boolean;
   }

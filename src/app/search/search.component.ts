@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { MatAutocomplete } from '@angular/material/autocomplete';
 import { Stock } from './search.model';
+import { SearchService } from './search.service';
 
 @Component({
   selector: 'm3-search',
@@ -11,16 +12,17 @@ import { Stock } from './search.model';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  private _url = 'https://pkza21c9q7.execute-api.us-east-1.amazonaws.com/dev/ref-data/symbol';
-  private _stock: Stock[];
   filteredStocks: BehaviorSubject<Stock[]>;
 
-  constructor(private _router: Router) {
+  constructor(private _router: Router, private _searchService: SearchService) {
     this.filteredStocks = new BehaviorSubject([]);
   }
 
   ngOnInit() {
-    this.filteredStocks.next(this._stock);
+    // this._httpClient.get<Stock[]>(this._url).subscribe(data => {
+    //   this._stock = data;
+    //   this.filteredStocks.next(this._stock);
+    // });
   }
   onSearch(searchTerm: string) {
     this._router.navigateByUrl(`/search?term=${searchTerm}`);
@@ -34,7 +36,7 @@ export class SearchComponent implements OnInit {
     }
     const capitalizedSearchTerm = searchTerm.toUpperCase();
     this.filteredStocks.next(
-      this._stock.filter(stock => stock.symbol.indexOf(capitalizedSearchTerm) >= 0
+      this._searchService.stocks.filter(stock => stock.symbol.indexOf(capitalizedSearchTerm) >= 0
         || stock.name.toUpperCase().indexOf(capitalizedSearchTerm) >= 0));
   }
 }

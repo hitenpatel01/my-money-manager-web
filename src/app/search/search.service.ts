@@ -6,13 +6,14 @@ import { Stock } from './search.model';
   providedIn: 'root'
 })
 export class SearchService {
-  private _url: string;
+  private _url = 'assets/data/symbols.json';
   stocks: Stock[];
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient) {
+    this.getSymbols();
+  }
   getSymbols() {
     this._http.get<Stock[]>(this._url).subscribe(stocks => {
-      this.stocks = stocks
-        .filter(x => true === x.isEnabled);
+      this.stocks = stocks;
     });
   }
 }

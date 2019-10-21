@@ -15,7 +15,13 @@ a {
 .title {
     vertical-align: middle;
     @media screen and ($mat-xsmall) {
-        display: none
+        //display: none
+    }
+}
+
+.header-button {
+    @media screen and ($mat-xsmall) {
+        width: 36px !important;
     }
 }
 

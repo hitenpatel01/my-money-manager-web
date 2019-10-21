@@ -3,21 +3,16 @@
     <button #menu mat-icon-button (click)="menuClick.emit()" accesskey="m">
       <mat-icon>menu</mat-icon>
     </button>
-    <!-- <span class="title"> -->
     <a class="app-name" [routerLink]="'/home'" accesskey="h">
       <img class="logo" src="../../assets/favicon-32x32.png" alt="logo"><span class="title">My Money Manager</span></a>
-    <!-- </span> -->
     <div style="display: flex; flex: 1; justify-content: flex-end;">
-      <!-- TODO: Enabled nav below if required -->
-      <!-- <nav>
-      <a href="#">Nav1</a>
-      <a href="#">Nav2</a>
-    </nav> -->
-      <m3-search></m3-search>
-      <button mat-icon-button>
+      <button class="header-button" mat-icon-button>
+        <mat-icon>search</mat-icon>
+      </button>
+      <button  class="header-button" mat-icon-button>
         <mat-icon>notifications</mat-icon>
       </button>
-      <button mat-icon-button [matMenuTriggerFor]="menu" accesskey="o">
+      <button  class="header-button" mat-icon-button [matMenuTriggerFor]="menu" accesskey="o">
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">

@@ -9,17 +9,29 @@
       <button class="header-button" mat-icon-button>
         <mat-icon>search</mat-icon>
       </button>
-      <button  class="header-button" mat-icon-button>
+      <button class="header-button" mat-icon-button>
         <mat-icon>notifications</mat-icon>
       </button>
-      <button  class="header-button" mat-icon-button [matMenuTriggerFor]="menu" accesskey="o">
+      <button class="header-button" mat-icon-button [matMenuTriggerFor]="menu" accesskey="o">
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
         <div style="padding: 8px 16px">
-          <mat-slide-toggle id="themeToggle" #themeToggle [checked]="isDarkTheme" (change)="toggleTheme()">Dark
+          <!-- <mat-slide-toggle id="themeToggle" #themeToggle [checked]="isDarkTheme" (change)="toggleTheme()">Dark
             Theme</mat-slide-toggle>
-          <mat-hint>Toggle to select light or dark theme</mat-hint>
+          <mat-hint>Toggle to select light or dark theme</mat-hint> -->
+          <button *ngIf="isDarkTheme" mat-menu-item (click)="toggleTheme()">
+            <mat-icon>brightness_high</mat-icon>
+            <span>Light Theme</span>
+          </button>
+          <button *ngIf="!isDarkTheme" mat-menu-item (click)="toggleTheme()">
+            <mat-icon>brightness_low</mat-icon>
+            <span>Dark Theme</span>
+          </button>
+          <a routerLink="account" mat-menu-item>
+            <mat-icon>account_circle</mat-icon>
+            <span>Account</span>
+          </a>
         </div>
       </mat-menu>
     </div>

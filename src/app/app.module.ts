@@ -18,6 +18,7 @@ import { FooterComponent } from './site/footer/footer.component';
 import { CoreModule } from './core/core.module';
 import { AboutComponent } from './about/about/about.component';
 import { PrivacyComponent } from './privacy/privacy/privacy.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PrivacyComponent } from './privacy/privacy/privacy.component';
     NavigationComponent,
     FooterComponent,
     AboutComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    AccountComponent
   ],
   imports: [
     HttpClientModule,

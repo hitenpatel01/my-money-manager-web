@@ -10,10 +10,16 @@ export class StateService extends BaseService {
   constructor() {
     super();
   }
-  setValue(key: string, value: string) {
+  setValue(key: string, value: any) {
+    value = 'object' === typeof value ? JSON.stringify(value) : value;
     window.localStorage.setItem(key, value);
   }
-  private getValue(key: string) {
-    return window.localStorage.getItem(key);
+  getValue(key: string) {
+    const value = window.localStorage.getItem(key);
+    try {
+      return JSON.parse(value);
+    } catch {
+      return value;
+    }
   }
 }

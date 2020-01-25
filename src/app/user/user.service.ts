@@ -20,8 +20,8 @@ export class UserService {
   private _user: User;
   private _correlationId: string;
   private _pkceChallenge: {
-    code_challenge: string;
-    code_verifier: string;
+    codeChallenge: string;
+    codeVerifier: string;
   };
   get user() {
     return this._user;
@@ -40,7 +40,7 @@ export class UserService {
   getAuthorizationUrl() {
     return environment.urls.authorizationPkce
       .replace('{{STATE}}', this._correlationId)
-      .replace('{{CODE_CHALLENGE}}', this._pkceChallenge.code_challenge);
+      .replace('{{CODE_CHALLENGE}}', this._pkceChallenge.codeChallenge);
   }
   postAuthorization(state: string, code: string) {
     if (this._correlationId !== state) {
@@ -52,7 +52,7 @@ export class UserService {
       .set('client_id', '4mstutl93bnan7gnrdff6t7ado')
       .set('redirect_uri', 'http://localhost:4200')
       .set('code', code)
-      .set('code_verifier', this._pkceChallenge.code_verifier);
+      .set('code_verifier', this._pkceChallenge.codeVerifier);
 
     this._http.post(environment.urls.token, body, {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },

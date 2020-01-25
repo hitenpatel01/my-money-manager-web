@@ -30,14 +30,18 @@ export class UserService {
     this.preAuthorization();
   }
   preAuthorization() {
+    console.log('starting pre-authorization');
     this._correlationId = this._stateService.getValue(AUTHORIZATION_COORELATION_ID) || uuid();
     this._stateService.setValue(AUTHORIZATION_COORELATION_ID, this._correlationId);
+    console.log('corelation id is set');
+
 
     this._pkceChallenge = this._stateService.getValue(AUTHORIZATION_PKCE_CHALLENGE) || pkceChallenge(43);
     this._stateService.setValue(AUTHORIZATION_PKCE_CHALLENGE, this._pkceChallenge);
+    console.log('pkce challenge is set');
   }
   getAuthorizationUrl() {
-    return environment.urls.authorization
+    return environment.urls.authorizationPkce
       .replace('{{STATE}}', this._correlationId)
       .replace('{{CODE_CHALLENGE}}', this._pkceChallenge.code_challenge);
   }

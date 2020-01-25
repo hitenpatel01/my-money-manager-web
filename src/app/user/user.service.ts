@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import * as uuid from 'uuid/v4';
-import pkceChallenge from 'pkce-challenge';
+import * as pkce from 'pkce';
 import jwt from 'jwt-decode';
 
 import { environment } from '../../environments/environment';
@@ -30,15 +30,12 @@ export class UserService {
     this.preAuthorization();
   }
   preAuthorization() {
-    console.log('starting pre-authorization');
     this._correlationId = this._stateService.getValue(AUTHORIZATION_COORELATION_ID) || uuid();
     this._stateService.setValue(AUTHORIZATION_COORELATION_ID, this._correlationId);
-    console.log('corelation id is set');
 
 
-    this._pkceChallenge = this._stateService.getValue(AUTHORIZATION_PKCE_CHALLENGE) || pkceChallenge(43);
+    this._pkceChallenge = this._stateService.getValue(AUTHORIZATION_PKCE_CHALLENGE) || pkce.create(43);
     this._stateService.setValue(AUTHORIZATION_PKCE_CHALLENGE, this._pkceChallenge);
-    console.log('pkce challenge is set');
   }
   getAuthorizationUrl() {
     return environment.urls.authorizationPkce
@@ -62,7 +59,10 @@ export class UserService {
     }).subscribe(data => {
       this._stateService.setValue(AUTHORIZATION_TOKENS, data);
       const decodedIdToken = jwt(data['id_token']);
-      this._user = new User(decodedIdToken['cognito:username'], decodedIdToken['email']);
+      this._user = new User(decodedIdToken['cognito:username']
+        , decodedIdToken['given_name']
+        , decodedIdToken['family_name']
+        , decodedIdToken['email']);
     });
   }
 

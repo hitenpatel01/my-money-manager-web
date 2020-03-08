@@ -58,8 +58,8 @@ export class UserService {
 
     const body = new HttpParams()
       .set('grant_type', 'authorization_code')
-      .set('client_id', '4mstutl93bnan7gnrdff6t7ado')
-      .set('redirect_uri', 'http://localhost:4200/user')
+      .set('client_id', environment.idpClientId)
+      .set('redirect_uri', environment.urls.redirect)
       .set('code', code)
       .set('code_verifier', this.pkceChallenge.codeVerifier);
 

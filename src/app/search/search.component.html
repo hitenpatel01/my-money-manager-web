@@ -13,7 +13,7 @@
   </mat-form-field>
   <mat-autocomplete class="test" #symbolAutoComplete="matAutocomplete" >
     <mat-option *ngFor="let stock of filteredStocks | async" [value]="stock.symbol">
-      <span style="display: inline-block; width: 55px">{{stock.symbol}}</span>
+      <span style="display: inline-block; width: 65px">{{stock.symbol}}</span>
       <span>{{stock.name}}</span>
     </mat-option>
   </mat-autocomplete>

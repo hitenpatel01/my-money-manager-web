@@ -12,6 +12,7 @@ import { SearchService } from './search.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
+  value;
   filteredStocks: BehaviorSubject<Stock[]>;
 
   constructor(private _router: Router, private _searchService: SearchService) {

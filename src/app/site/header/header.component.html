@@ -8,12 +8,9 @@
       <span class="title">My Money Manager</span>
     </a>
     <div style="display: flex; flex: 1; justify-content: flex-end;">
-      <button class="header-button" mat-icon-button>
+      <a mat-button class="header-button" mat-icon-button routerLink="search">
         <mat-icon>search</mat-icon>
-      </button>
-      <button class="header-button" mat-icon-button>
-        <mat-icon>notifications</mat-icon>
-      </button>
+      </a>
       <button class="header-button" mat-icon-button [matMenuTriggerFor]="menu" accesskey="o">
         <mat-icon>more_vert</mat-icon>
       </button>
@@ -30,10 +27,6 @@
             <mat-icon>brightness_low</mat-icon>
             <span>Dark Theme</span>
           </button>
-          <a routerLink="account" mat-menu-item>
-            <mat-icon>account_circle</mat-icon>
-            <span>Account</span>
-          </a>
         </div>
       </mat-menu>
     </div>

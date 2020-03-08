@@ -12,14 +12,17 @@ export class StateService extends BaseService {
   }
   setValue(key: string, value: any) {
     value = 'object' === typeof value ? JSON.stringify(value) : value;
-    window.localStorage.setItem(key, value);
+    window.sessionStorage.setItem(key, value);
   }
   getValue(key: string) {
-    const value = window.localStorage.getItem(key);
+    const value = window.sessionStorage.getItem(key);
     try {
       return JSON.parse(value);
     } catch {
       return value;
     }
+  }
+  clearValue(key: string) {
+    window.sessionStorage.removeItem(key);
   }
 }

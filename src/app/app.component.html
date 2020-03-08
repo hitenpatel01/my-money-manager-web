@@ -1,12 +1,24 @@
 <div class="app-container" [ngClass]="themeClass">
-  <m3-header #header (menuClick)="sideNav.toggle()"></m3-header>
-  <mat-sidenav-container class="side-nav-container">
-    <mat-sidenav #sideNav [mode]="sideNavMode" class="side-nav" [opened]="isOpened">
-      <m3-navigation></m3-navigation>
-    </mat-sidenav>
-    <mat-sidenav-content class="side-nav-content">
+  <ng-container *ngIf="userService.isUserLoggedIn || true; else loginMessage">
+    <m3-header #header (menuClick)="sideNav.toggle()"></m3-header>
+    <mat-sidenav-container class="side-nav-container">
+      <mat-sidenav #sideNav [mode]="sideNavMode" class="side-nav" [opened]="isOpened">
+        <m3-navigation></m3-navigation>
+      </mat-sidenav>
+      <mat-sidenav-content class="side-nav-content">
         <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  <m3-footer></m3-footer>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+    <m3-footer></m3-footer>
+  </ng-container>
+  <ng-template #loginMessage>
+    <div style="display: flex; height: 100%">
+      <div style="flex: 1 1 50%; background-color: #EEE">
+          <m3-home></m3-home>
+      </div>
+      <div style="flex: 1 1 50%; height: 100%; display: flex; align-items: center; justify-content: center; ">
+          <div>Login Message</div>
+      </div>
+    </div>
+  </ng-template>
 </div>

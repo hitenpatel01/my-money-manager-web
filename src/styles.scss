@@ -28,12 +28,12 @@ $custom-typography: mat-typography-config(
 
 @mixin input-focus-blur-theme($theme) {
     $background: map-get($theme, accent);    
-    input:focus {
-        background-color: mat-color($background, A100);
-    }
-    input:blur {
-        background-color: inherit;
-    }
+    // input:focus {
+    //     background-color: mat-color($background, A100);
+    // }
+    // input:blur {
+    //     background-color: inherit;
+    // }
 }
 
 @mixin component-theme($theme) {

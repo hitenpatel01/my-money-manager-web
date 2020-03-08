@@ -1,13 +1,20 @@
-<input #search id="search" type="Search" placeholder="Symbol" title="Enter symbol name to search" accesskey="s"
-  [matAutocomplete]="symbolAutoComplete" (keyup.enter)="onSearch(search.value)" (input)="onChange(search.value)"
-  (change)="onChange(search.value)">
-<mat-autocomplete class="test" #symbolAutoComplete="matAutocomplete" [panelWidth]="'auto'">
-  <mat-option *ngFor="let stock of filteredStocks | async" [value]="stock.symbol">
-    <span style="display: inline-block; width: 55px">{{stock.symbol}}</span>
-    <span>{{stock.name}}</span>
-    <!-- <div style="line-height: 16px">
-      <span style="display: inline-block; vertical-align: top">{{symbol.symbol}}</span>
-      <span style="display: inline-block; margin-left: 16px; white-space: normal">{{symbol.name}}</span>
-    </div> -->
-  </mat-option>
-</mat-autocomplete>
+<m3-base-page title="Search">
+  <!-- <input #search id="search" type="Search" placeholder="Enter symbol name to search" title="Enter symbol name to search"
+    accesskey="s" [matAutocomplete]="symbolAutoComplete" (keyup.enter)="onSearch(search.value)"
+    (input)="onChange(search.value)" (change)="onChange(search.value)">
+   -->
+  <mat-form-field class="search">
+    <mat-label>Enter stock symbol to search</mat-label>
+    <input #search id="search" matInput type="search" [(ngModel)]="value" [matAutocomplete]="symbolAutoComplete"
+      (keyup.enter)="onSearch(search.value)" (input)="onChange(search.value)" (change)="onChange(search.value)">
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-autocomplete class="test" #symbolAutoComplete="matAutocomplete" >
+    <mat-option *ngFor="let stock of filteredStocks | async" [value]="stock.symbol">
+      <span style="display: inline-block; width: 55px">{{stock.symbol}}</span>
+      <span>{{stock.name}}</span>
+    </mat-option>
+  </mat-autocomplete>
+</m3-base-page>

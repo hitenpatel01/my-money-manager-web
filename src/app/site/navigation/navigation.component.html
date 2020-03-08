@@ -1,8 +1,7 @@
 <div class="menu" *ngIf="userService.user">
     <nav style="background: unset;">
-        <!-- <button mat-button color="primary" style="padding-left: 0"><mat-icon style="padding-right: 5px; font-size: 21px;">person</mat-icon>Login / Signup</button> -->
         <div class="nav-title">{{userService?.user.userName}}</div>
-        <button mat-button color="primary" style="padding-left: 0">
+        <button mat-button color="accent" style="padding-left: 0" (click)="userService.logout()">
             <mat-icon style="padding-right: 5px; font-size: 21px;">exit_to_app</mat-icon>Logout
         </button>
     </nav>
@@ -39,8 +38,15 @@
 </div>
 <div class="menu" *ngIf="!userService.user">
     <nav style="background: unset;">
-        <a mat-button color="primary" style="padding-left: 0" [href]="userService.getAuthorizationUrl()">
+        <a mat-button color="accent" style="padding-left: 0" [href]="userService.authorizationUrl" 
+            (click)="userService.preAuthorization()">
             <mat-icon style="padding-right: 5px; font-size: 21px;">account_circle</mat-icon>Login/Register
         </a>
+        <div style="font-size: 13px; line-height: 17px; margin-top: 9px;">
+            <div>Demo credentials</div>
+            <div>User: <strong>demouser</strong></div>
+            <div>Password: <strong>demouser</strong></div>
+        </div>
+        <!-- </p> -->
     </nav>
 </div>

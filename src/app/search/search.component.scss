@@ -1,20 +1,21 @@
 @import '~@angular/material/theming';
-#search {
-    border-radius: 100px;
-    border: none;
-    padding: 8px 12px;
-    outline: none;
+.search {
+    //border-radius: 100px;
+    //border: none;
+    width:100%;
+    //padding: 8px 12px;
+    //outline: none;
     //margin-right: 12px;
-    font-size: 14px;
-    margin-top: 4px;
-    margin: 4px 12px;
+    //font-size: 14px;
+    //margin-top: 4px;
+    //margin: 4px 12px;
 
-    @media screen and ($mat-xsmall) {
-        max-width: 150px;
-    }
+    // @media screen and ($mat-xsmall) {
+    //     max-width: 150px;
+    // }
 }
-.test {
-    left: unset;
-    right: 0;
-    background-color: yellow;
-}
+// .test {
+//     left: unset;
+//     right: 0;
+//     background-color: yellow;
+// }

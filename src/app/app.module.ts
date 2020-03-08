@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
+import { FormsModule } from '@angular/forms';
 
 import { AngularMaterialWrapperModule } from './angular-material-wrapper';
 
@@ -16,9 +17,10 @@ import { NavigationComponent } from './site/navigation/navigation.component';
 import { FooterComponent } from './site/footer/footer.component';
 
 import { CoreModule } from './core/core.module';
-import { AboutComponent } from './about/about/about.component';
+import { AboutComponent } from './about/about.component';
 import { PrivacyComponent } from './privacy/privacy/privacy.component';
-import { AccountComponent } from './account/account.component';
+import { UserComponent } from './user/user.component';
+import { Error404Component } from './site/error404/error404.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { AccountComponent } from './account/account.component';
     FooterComponent,
     AboutComponent,
     PrivacyComponent,
-    AccountComponent
+    UserComponent,
+    Error404Component
   ],
   imports: [
     HttpClientModule,
@@ -38,6 +41,7 @@ import { AccountComponent } from './account/account.component';
     BrowserModule,
     BrowserAnimationsModule,
     LayoutModule,
+    FormsModule,
     AngularMaterialWrapperModule,
     AppRoutingModule,
     CoreModule

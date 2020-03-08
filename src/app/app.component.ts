@@ -4,6 +4,7 @@ import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/l
 import { SettingsService } from './core/settings/settings.service';
 import { Subscription } from 'rxjs';
 import { SettingChangeEvent, Setting, Theme } from './core/settings/settings.model';
+import { UserService } from './user/user.service';
 
 enum ThemeClass {
   Light = 'm3-light-theme',
@@ -22,7 +23,9 @@ export class AppComponent implements OnInit {
   isOpened;
   private _settingsSubscription: Subscription;
   constructor(private _settingsService: SettingsService,
-    private _overlayContainer: OverlayContainer, public breakpointObserver: BreakpointObserver) { }
+    public userService: UserService,
+    private _overlayContainer: OverlayContainer,
+    public breakpointObserver: BreakpointObserver) { }
   ngOnInit() {
     this._setTheme(this._settingsService.getSetting(Setting.Theme));
 

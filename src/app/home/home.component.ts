@@ -21,12 +21,5 @@ export class HomeComponent implements OnInit {
         this.isDarkTheme = event.value === Theme.Dark;
       }
     });
-
-    const code = this._route.snapshot.queryParams['code'];
-    const state = this._route.snapshot.queryParams['state'];
-
-    if (code && state) {
-      this._user.postAuthorization(state, code);
-    }
   }
 }

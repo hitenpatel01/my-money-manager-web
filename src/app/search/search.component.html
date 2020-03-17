@@ -4,11 +4,11 @@
     (input)="onChange(search.value)" (change)="onChange(search.value)">
    -->
   <mat-form-field class="search">
-    <mat-label>Enter stock symbol to search</mat-label>
+    <mat-label>Enter symbol to search</mat-label>
     <!-- <input #search id="search" matInput type="search" [(ngModel)]="value" [matAutocomplete]="symbolAutoComplete"
       (keyup.enter)="onSearch(search.value)" (input)="onChange(search.value)" (change)="onChange(search.value)"> -->
-    <input #search id="search" matInput type="search" [(ngModel)]="value"
-      (keyup.enter)="onSearch(search.value)" (input)="onChange(search.value)" (change)="onChange(search.value)">
+    <input #search id="search" matInput type="search" [(ngModel)]="value" (keyup.enter)="onSearch(search.value)"
+      (input)="onChange(search.value)" (change)="onChange(search.value)">
     <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
       <mat-icon>close</mat-icon>
     </button>
@@ -20,9 +20,11 @@
     </mat-option>
   </mat-autocomplete> -->
   <mat-list>
-    <a mat-list-item href="#" *ngFor="let stock of filteredStocks | async"> 
-      <!-- <span style="margin: 0 9px 0 0"> {{stock.symbol}} </span> -->
-      <span> {{stock.name}} ({{stock.symbol}})</span>
-    </a>
+    <mat-list-item *ngFor="let stock of filteredStocks | async">
+      <a mat-button color="accent" [routerLink]="'/symbol/' + stock.symbol" class="search-item">
+        <span> {{stock.name}} ({{stock.symbol}})</span>
+      </a>
+      <mat-divider></mat-divider>
+    </mat-list-item>
   </mat-list>
 </m3-base-page>

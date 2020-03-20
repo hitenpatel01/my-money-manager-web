@@ -1,10 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, fromEvent } from 'rxjs';
+import { map, filter, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { MatAutocomplete } from '@angular/material/autocomplete';
-import { Stock } from './search.model';
+import { Symbol } from './search.model';
 import { SearchService } from './search.service';
+import { Location } from '@angular/common';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'm3-search',
@@ -12,32 +15,44 @@ import { SearchService } from './search.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  value;
-  filteredStocks: BehaviorSubject<Stock[]>;
+  symbol: string;
+  private _symbols: Symbol[];
+  filteredSymbols: BehaviorSubject<_.Dictionary<Symbol[]>>;
+  @ViewChild('search', { static: false }) search: any;
 
-  constructor(private _router: Router, private _searchService: SearchService) {
-    this.filteredStocks = new BehaviorSubject([]);
+  constructor(private _router: Router, private _route: ActivatedRoute, private _searchService: SearchService, private _location: Location) {
+    this.filteredSymbols = new BehaviorSubject({});
   }
 
-  ngOnInit() {
-    // this._httpClient.get<Stock[]>(this._url).subscribe(data => {
-    //   this._stock = data;
-    //   this.filteredStocks.next(this._stock);
-    // });
-  }
-  onSearch(searchTerm: string) {
-    this._router.navigateByUrl(`/search?term=${searchTerm}`);
-  }
-  onChange(searchTerm: string) {
-    if (searchTerm.length === 0) {
-      this.filteredStocks.next(null);
+  async ngOnInit() {
+    this._symbols = await this._searchService.getSymbols();
+    this.symbol = this._route.snapshot.queryParams['symbol'];
+    if (this.symbol) {
+      this.onChange();
     }
-    if (searchTerm.length < 3) {
+  }
+  resetSymbol() {
+    this.symbol = '';
+    this._updateUrl();
+    this.filteredSymbols.next({});
+  }
+  onChange() {
+    this._updateUrl();
+
+    if (this.symbol.length < 3) {
+      this.filteredSymbols.next({});
       return;
     }
-    const capitalizedSearchTerm = searchTerm.toUpperCase();
-    this.filteredStocks.next(
-      this._searchService.stocks.filter(stock => stock.symbol.indexOf(capitalizedSearchTerm) >= 0
-        || stock.name.toUpperCase().indexOf(capitalizedSearchTerm) >= 0));
+    const capitalizedSearchTerm = this.symbol.toUpperCase();
+
+    const result = this._symbols.filter(stock => stock.symbol.indexOf(capitalizedSearchTerm) >= 0
+      || stock.name.toUpperCase().indexOf(capitalizedSearchTerm) >= 0);
+
+    const groupedResult = _.groupBy(result, 'type');
+
+    this.filteredSymbols.next(groupedResult);
+  }
+  private _updateUrl() {
+    this._location.go(location.pathname, `symbol=${this.symbol}`);
   }
 }

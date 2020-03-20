@@ -1,15 +1,8 @@
-export interface Stock {
+export interface Symbol {
   symbol: string;
-  // exchange: string;
+  exchange: string;
   name: string;
-  // date: Date;
   type: string;
-  // region: string;
-  // currency: string;
-  // isEnabled: boolean;
-}
-
-export interface StockGroup {
-  type: string;
-  stocks: Stock[];
+  region: string;
+  currency: string;
 }

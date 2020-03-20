@@ -1,30 +1,28 @@
 <m3-base-page title="Search">
-  <!-- <input #search id="search" type="Search" placeholder="Enter symbol name to search" title="Enter symbol name to search"
-    accesskey="s" [matAutocomplete]="symbolAutoComplete" (keyup.enter)="onSearch(search.value)"
-    (input)="onChange(search.value)" (change)="onChange(search.value)">
-   -->
   <mat-form-field class="search">
     <mat-label>Enter symbol to search</mat-label>
-    <!-- <input #search id="search" matInput type="search" [(ngModel)]="value" [matAutocomplete]="symbolAutoComplete"
-      (keyup.enter)="onSearch(search.value)" (input)="onChange(search.value)" (change)="onChange(search.value)"> -->
-    <input #search id="search" matInput type="search" [(ngModel)]="value" (keyup.enter)="onSearch(search.value)"
-      (input)="onChange(search.value)" (change)="onChange(search.value)">
-    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+    <input #search id="search" matInput type="search" [(ngModel)]="symbol" (input)="onChange()">
+    <button mat-button *ngIf="symbol" matSuffix mat-icon-button aria-label="Clear" (click)="resetSymbol()">
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
-  <!-- <mat-autocomplete class="test" #symbolAutoComplete="matAutocomplete">
-    <mat-option *ngFor="let stock of filteredStocks | async" [value]="stock.symbol">
-      <span style="display: inline-block; width: 65px">{{stock.symbol}}</span>
-      <span>{{stock.name}}</span>
-    </mat-option>
-  </mat-autocomplete> -->
-  <mat-list>
-    <mat-list-item *ngFor="let stock of filteredStocks | async">
-      <a mat-button color="accent" [routerLink]="'/symbol/' + stock.symbol" class="search-item">
-        <span> {{stock.name}} ({{stock.symbol}})</span>
-      </a>
-      <mat-divider></mat-divider>
-    </mat-list-item>
+  <mat-list style="padding: 0">
+    <div *ngFor="let group of filteredSymbols | async | keyvalue">
+      <div mat-subheader>{{group.key | uppercase}} ({{group.value.length}})</div>
+      <mat-list-item *ngFor="let symbol of group.value">
+        <div matLine style="font-size: 10px;">
+          <span class="symbol-attribute-name">Exchange:</span>
+          <span class="symbol-attribute-value">{{symbol.exchange}}</span>
+          <span class="symbol-attribute-name">Region:</span>
+          <span class="symbol-attribute-value">{{symbol.region}}</span>
+          <span class="symbol-attribute-name">Currency:</span>
+          <span class="symbol-attribute-value">{{symbol.currency}}</span>
+        </div>
+        <a matLine mat-button color="accent" [routerLink]="'/symbol/' + symbol.symbol" class="search-item">
+          <span> {{symbol.name}} ({{symbol.symbol}})</span>
+        </a>
+      </mat-list-item>
+      <mat-divider style="margin-bottom: 10px;"></mat-divider>
+    </div>
   </mat-list>
 </m3-base-page>

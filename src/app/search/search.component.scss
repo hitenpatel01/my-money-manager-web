@@ -1,28 +1,19 @@
 @import '~@angular/material/theming';
 .search {
-    //border-radius: 100px;
-    //border: none;
     width:100%;
-    //padding: 8px 12px;
-    //outline: none;
-    //margin-right: 12px;
-    //font-size: 14px;
-    //margin-top: 4px;
-    //margin: 4px 12px;
-
-    // @media screen and ($mat-xsmall) {
-    //     max-width: 150px;
-    // }
 }
-// .test {
-//     left: unset;
-//     right: 0;
-//     background-color: yellow;
-// }
 .search-item {
     padding: 0;
     margin: -10px;
     line-height: 18px;
     white-space: normal;
     text-align: left;
+}
+.symbol-attribute-name {
+    font-weight: 300;
+}
+.symbol-attribute-value {
+    font-weight: 400;
+    margin-left: 2px;
+    margin-right: 10px;
 }

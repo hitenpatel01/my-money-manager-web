@@ -18,9 +18,9 @@ import { FooterComponent } from './site/footer/footer.component';
 
 import { CoreModule } from './core/core.module';
 import { AboutComponent } from './about/about.component';
-import { PrivacyComponent } from './privacy/privacy/privacy.component';
 import { UserComponent } from './user/user.component';
 import { Error404Component } from './site/error404/error404.component';
+import { TermsComponent } from './terms/terms.component';
 
 @NgModule({
   declarations: [
@@ -31,9 +31,9 @@ import { Error404Component } from './site/error404/error404.component';
     NavigationComponent,
     FooterComponent,
     AboutComponent,
-    PrivacyComponent,
     UserComponent,
-    Error404Component
+    Error404Component,
+    TermsComponent
   ],
   imports: [
     HttpClientModule,

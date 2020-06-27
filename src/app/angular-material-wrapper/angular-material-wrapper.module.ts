@@ -10,8 +10,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
+
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 const modules = [
   MatAutocompleteModule,
@@ -25,8 +29,11 @@ const modules = [
   MatMenuModule,
   MatSidenavModule,
   MatSlideToggleModule,
+  MatTableModule,
+  MatTabsModule,
   MatToolbarModule,
-  MatListModule
+  MatListModule,
+  ScrollingModule
 ];
 
 @NgModule({

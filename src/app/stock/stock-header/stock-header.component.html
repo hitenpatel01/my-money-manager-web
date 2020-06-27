@@ -1,0 +1,26 @@
+<div class="header-container">
+    <!-- <div class="header-company">
+        <div>
+            <span class="header-company-item" style="font-size: x-large;">{{data.symbol}}</span>
+            <span class="header-company-item">{{data.companyName}}</span>
+        </div>
+        <div style="font-size: smaller;">
+            <span class="header-company-item">{{data.primaryExchange}}</span>
+        </div>
+    </div> -->
+    <div class="header-price">
+        <div>
+            <span class="header-price-item" style="font-size: x-large;">{{data.latestPrice}}</span>
+            <span class="header-price-item" m3PriceColor [value]="data.change">{{data.change | sign}}</span>
+            <span class="header-price-item" m3PriceColor [value]="data.changePercent">{{data.changePercent | percent:'1.1-2' | sign }}</span>
+        </div>
+        <div style="font-size: smaller;">
+            <!-- <span class="header-price-item">Open: <strong>{{data.open}}</strong></span>
+            <span class="header-price-item">High: <strong>{{data.high}}</strong></span>
+            <span class="header-price-item">Low: <strong>{{data.low}}</strong></span>
+            <span class="header-price-item">Close: <strong>{{data.close}}</strong></span> -->
+            <span class="header-price-item">{{data.latestUpdate | date : 'medium'}} ({{data.latestSource}})</span>
+            
+        </div>
+    </div>
+</div>

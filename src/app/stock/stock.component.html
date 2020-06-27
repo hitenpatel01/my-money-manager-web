@@ -1,0 +1,28 @@
+<m3-base-page [title]="quote?.symbol">
+    <div *ngIf="quote">
+        <m3-stock-header [data]="quote"></m3-stock-header>
+    </div>
+    <mat-tab-group>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="stock-tab-icon">timeline</mat-icon>
+                Stock
+            </ng-template>
+            <m3-stock-price [data]=quote></m3-stock-price>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="stock-tab-icon">business</mat-icon>
+                Company
+            </ng-template>
+            <m3-stock-company [symbol]="quote?.symbol"></m3-stock-company>
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon class="stock-tab-icon">article</mat-icon>
+                News
+            </ng-template>
+            <m3-stock-news [symbol]="quote?.symbol"></m3-stock-news>
+        </mat-tab>
+    </mat-tab-group>
+</m3-base-page>

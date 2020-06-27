@@ -1,0 +1,18 @@
+{
+    "symbol": "MSFT",
+    "earnings": [
+        {
+            "actualEPS": 1.4,
+            "consensusEPS": 1.27,
+            "announceTime": "AMC",
+            "numberOfEstimates": 30,
+            "EPSSurpriseDollar": 0.13,
+            "EPSReportDate": "2020-04-29",
+            "fiscalPeriod": "Q1 2020",
+            "fiscalEndDate": "2020-03-31",
+            "yearAgo": 1.14,
+            "yearAgoChangePercent": 0.2281,
+            "currency": "USD"
+        }
+    ]
+}

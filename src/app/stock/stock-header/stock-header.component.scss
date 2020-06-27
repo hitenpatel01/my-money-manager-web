@@ -1,0 +1,16 @@
+.header-container {
+    display: flex;
+}
+.header-company {
+    flex: 1 1 auto;
+    text-align: left;
+}
+.header-company-item {
+    margin-right: 10px;
+}
+.header-price {
+    flex: 1 1 auto;
+}
+.header-price-item {
+    margin-right: 10px;
+}

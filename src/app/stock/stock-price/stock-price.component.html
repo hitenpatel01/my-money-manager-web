@@ -1,0 +1,65 @@
+<div style="display: flex; margin: 10px 0 0 0">
+    <div style="flex: 0 0 20%">
+        <table>
+            <tr>
+                <td class="price-field-name">Open</td>
+                <td class="price-field-value">{{data?.open}}</td>
+            </tr>
+            <tr>
+                <td class="price-field-name">High</td>
+                <td class="price-field-value">{{data?.high}}</td>
+            </tr>
+            <tr>
+                <td class="price-field-name">Low</td>
+                <td class="price-field-value">{{data?.low}}</td>
+            </tr>
+            <tr>
+                <td class="price-field-name">Close</td>
+                <td class="price-field-value">{{data?.close}}</td>
+            </tr>
+            <tr>
+                <td class="price-field-name">Volume</td>
+                <td class="price-field-value">{{data?.latestVolume | number}}</td>
+            </tr>
+            <tr>
+                <td class="price-field-name">Previous Close</td>
+                <td class="price-field-value">{{data?.previousClose}}</td>
+            </tr>
+            <tr>
+                <td class="price-field-name">Previous Volume</td>
+                <td class="price-field-value">{{data?.previousVolume | number}}</td>
+            </tr>
+            <tr>
+                <td class="price-field-name">52 Week Low</td>
+                <td class="price-field-value">{{data?.week52Low}}</td>
+            </tr>
+            <tr>
+                <td class="price-field-name">52 Week High</td>
+                <td class="price-field-value">{{data?.week52High}}</td>
+            </tr>
+            <tr>
+                <td class="price-field-name">YTD Change</td>
+                <td class="price-field-value">{{data?.ytdChange | percent : '1.2-2'}}</td>
+            </tr>
+            <tr>
+                <td class="price-field-name">P/E Ratio</td>
+                <td class="price-field-value">{{data?.peRatio}}</td>
+            </tr>
+            <tr>
+                <td class="price-field-name">Market Cap</td>
+                <td class="price-field-value">{{data?.marketCap | number : '1.0-0'}}</td>
+            </tr>
+            <tr>
+                <td class="price-field-name">Exchange</td>
+                <td class="price-field-value">{{data?.primaryExchange}}</td>
+            </tr>
+        </table>
+    </div>
+    <div style="flex: 0 0 80%">
+
+        <google-chart #stockChart [options]="chartOptions" [data]="chartData" type="LineChart" [dynamicResize]="true"
+            style="width: 100%; height: calc(100vh - 330px)"></google-chart>
+    </div>
+</div>
+
+<!-- {{data | json}} -->

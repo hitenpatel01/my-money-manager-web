@@ -1,5 +1,5 @@
 <m3-base-page title="Search">
-  <mat-form-field class="search">
+  <mat-form-field class="search" cdkFocusInitial>
     <mat-label>Enter symbol to search</mat-label>
     <input #search id="search" matInput type="search" [(ngModel)]="symbol" (input)="onChange()">
     <button mat-button *ngIf="symbol" matSuffix mat-icon-button aria-label="Clear" (click)="resetSymbol()">
@@ -18,7 +18,7 @@
           <span class="symbol-attribute-name">Currency:</span>
           <span class="symbol-attribute-value">{{symbol.currency}}</span>
         </div>
-        <a matLine mat-button color="accent" [routerLink]="'/symbol/' + symbol.symbol" class="search-item">
+        <a matLine mat-button color="accent" [routerLink]="'/stock/' + symbol.symbol" class="search-item">
           <span> {{symbol.name}} ({{symbol.symbol}})</span>
         </a>
       </mat-list-item>

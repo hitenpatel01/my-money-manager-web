@@ -7,13 +7,15 @@ import { SearchComponent } from './search/search.component';
 import { UserService } from './user/user.service';
 import { UserComponent } from './user/user.component';
 import { TermsComponent } from './terms/terms.component';
+import { StockComponent } from './stock/stock.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent},
   { path: 'about', component: AboutComponent},
-  { path: 'terms', component: TermsComponent},
+  { path: 'home', component: HomeComponent},
   { path: 'search', component: SearchComponent},
+  { path: 'stock/:symbol', component: StockComponent},
+  { path: 'terms', component: TermsComponent},
   { path: 'user', component: UserComponent},
   { path: '**', component: Error404Component},
 ];

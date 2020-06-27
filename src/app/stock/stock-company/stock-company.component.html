@@ -1,0 +1,173 @@
+<div style="display: flex; margin: 10px 0 0 0">
+    <div style="flex: 0 0 20%">
+        <mat-card>
+            <div style="text-align: center;">
+                <img [src]="logo?.url" />
+            </div>
+        </mat-card>
+        <mat-card style="margin-top: 10px;">
+            <table>
+                <tr>
+                    <td class="company-field-name">Company</td>
+                    <td class="company-field-value">{{company?.companyName}}</td>
+                </tr>
+                <tr>
+                    <td class="company-field-name">Industry</td>
+                    <td class="company-field-value">{{company?.industry}}</td>
+                </tr>
+                <tr>
+                    <td class="company-field-name">Sector</td>
+                    <td class="company-field-value">{{company?.sector}}</td>
+                </tr>
+                <tr>
+                    <td class="company-field-name">Tags</td>
+                    <td class="company-field-value">{{company?.tags}}</td>
+                </tr>
+                <tr>
+                    <td class="company-field-name">CEO</td>
+                    <td class="company-field-value">{{company?.CEO}}</td>
+                </tr>
+                <tr>
+                    <td class="company-field-name">Employees</td>
+                    <td class="company-field-value">{{company?.employees}}</td>
+                </tr>
+                <tr>
+                    <td class="company-field-name">Website</td>
+                    <td class="company-field-value">
+                        <a [href]="company?.website" target="_blank">{{company?.website}}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="company-field-name">Address</td>
+                    <td class="company-field-value">
+                        <span style="display: block">{{company?.address}}</span>
+                        <span style="display: block">{{company?.address2}}</span>
+                        <span style="display: block">{{company?.state}}</span>
+                        <span style="display: block">{{company?.city}}</span>
+                        <span style="display: block">{{company?.zip}}</span>
+                        <span style="display: block">{{company?.country}}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="company-field-name">Phone</td>
+                    <td class="company-field-value">{{company?.phone}}</td>
+                </tr>
+
+            </table>
+        </mat-card>
+    </div>
+    <div style="flex: 0 0 80%">
+        <div style="margin-left: 10px;">
+            <mat-card>
+                <!-- <mat-card-header> -->
+                    <div class="company-section-name">Description</div>
+                <!-- </mat-card-header> -->
+                <mat-card-content>
+                    {{company?.description}}
+                </mat-card-content>
+            </mat-card>
+            <mat-card style="margin-top: 10px;">
+                <mat-card-header>
+                    <mat-card-title>Dividends</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-table [dataSource]="dividends">
+                        <ng-container matColumnDef="exDate">
+                            <mat-header-cell *matHeaderCellDef> Ex Date </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.exDate}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="paymentDate">
+                            <mat-header-cell *matHeaderCellDef> Payment Date </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.paymentDate}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="recordDate">
+                            <mat-header-cell *matHeaderCellDef> Record Date </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.recordDate}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="declaredDate">
+                            <mat-header-cell *matHeaderCellDef> Declared Date </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.declaredDate}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="amount">
+                            <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="flag">
+                            <mat-header-cell *matHeaderCellDef> Flag </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.flag}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="currency">
+                            <mat-header-cell *matHeaderCellDef> Currency </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.currency}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="description">
+                            <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="frequency">
+                            <mat-header-cell *matHeaderCellDef> Frequency </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.frequency}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="date">
+                            <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="dividendDisplayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: dividendDisplayedColumns;"></mat-row>
+                    </mat-table>
+                </mat-card-content>
+            </mat-card>
+            <mat-card style="margin-top: 10px;">
+                <mat-card-header>
+                    <mat-card-title>Earnings</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-table [dataSource]="earnings?.earnings">
+                        <ng-container matColumnDef="actualEPS">
+                            <mat-header-cell *matHeaderCellDef> Actual EPS </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.actualEPS}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="consensusEPS">
+                            <mat-header-cell *matHeaderCellDef> Consensus EPS </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.consensusEPS}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="announceTime">
+                            <mat-header-cell *matHeaderCellDef> Announce Time </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.announceTime}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="numberOfEstimates">
+                            <mat-header-cell *matHeaderCellDef> No. of Estimates </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.numberOfEstimates}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="EPSSurpriseDollar">
+                            <mat-header-cell *matHeaderCellDef> EPS Surprise Dollar </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.EPSSurpriseDollar}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="EPSReportDate">
+                            <mat-header-cell *matHeaderCellDef> EPS Report Date </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.EPSReportDate}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="fiscalPeriod">
+                            <mat-header-cell *matHeaderCellDef> Fiscal Period </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.fiscalPeriod}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="yearAgo">
+                            <mat-header-cell *matHeaderCellDef> Year Ago </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.yearAgo}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="yearAgoChangePercent">
+                            <mat-header-cell *matHeaderCellDef> Year Ago (%) </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.yearAgoChangePercent}} </mat-cell>
+                        </ng-container>
+                        <ng-container matColumnDef="currency">
+                            <mat-header-cell *matHeaderCellDef> Currency </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.currency}} </mat-cell>
+                        </ng-container>
+                        <mat-header-row *matHeaderRowDef="epsDisplayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: epsDisplayedColumns;"></mat-row>
+                    </mat-table>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

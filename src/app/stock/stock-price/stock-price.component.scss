@@ -1,3 +1,14 @@
+.stock-price-container {
+    display: flex; margin: 10px 0 10px 0;
+    :last-child {
+        flex: 1 1 80%;
+        margin-left: 10px;
+    }
+}
+.handsetLayout>:last-child {
+    margin-left: 0px;
+    margin-top: 10px;
+}
 .price-field-name {
     text-align: right;
     padding-right: 5px;

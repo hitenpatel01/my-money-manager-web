@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StockService } from '../stock.service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'm3-stock-news',
@@ -9,7 +10,12 @@ import { StockService } from '../stock.service';
 export class StockNewsComponent implements OnInit {
   news: any;
   @Input() symbol: string;
-  constructor(private _stockService: StockService) { }
+  isHandsetLayout = false;
+  constructor(private _stockService: StockService, private _breakpointObserver: BreakpointObserver) { 
+    _breakpointObserver.observe(Breakpoints.Handset).subscribe(result => {
+      this.isHandsetLayout = result.matches;
+    });
+  }
   async ngOnInit() {
     this.news = await this._stockService.getNews(this.symbol);
   }

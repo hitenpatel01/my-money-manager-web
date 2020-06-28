@@ -1,5 +1,5 @@
-<div style="display: flex; margin: 10px 0 0 0">
-    <div style="flex: 0 0 20%">
+<div [ngClass]="{'stock-price-container': true, 'handsetLayout': isHandsetLayout}">
+    <mat-card>
         <table>
             <tr>
                 <td class="price-field-name">Open</td>
@@ -54,12 +54,9 @@
                 <td class="price-field-value">{{data?.primaryExchange}}</td>
             </tr>
         </table>
-    </div>
-    <div style="flex: 0 0 80%">
-
+    </mat-card>
+    <mat-card>
         <google-chart #stockChart [options]="chartOptions" [data]="chartData" type="LineChart" [dynamicResize]="true"
             style="width: 100%; height: calc(100vh - 330px)"></google-chart>
-    </div>
+    </mat-card>
 </div>
-
-<!-- {{data | json}} -->

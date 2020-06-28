@@ -1,3 +1,14 @@
+.company-container {
+    display: flex; 
+    margin: 10px 0 10px 0;
+}
+.company-container-item-2 {
+    margin-left: 10px;
+}
+.handsetLayout>.company-container-item-2 {
+    margin-left: 0px;
+    margin-top: 10px;
+}
 .company-field-name {
     text-align: right;
     vertical-align: top;
@@ -5,12 +16,4 @@
 }
 .company-field-value {
     font-weight: 500;
-}
-.company-section-name {
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 5px;
-}
-.company-section-content {
-    margin-bottom: 20px;
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { StockService } from '../stock.service';
 import { ChartEditorComponent, ChartBase } from 'angular-google-charts';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'm3-stock-price',
@@ -37,8 +38,12 @@ export class StockPriceComponent implements OnInit {
       format: 'MMM d'
     }
   };
-
-  constructor(private _stockService: StockService) { }
+  isHandsetLayout = false;
+  constructor(private _stockService: StockService, private _breakpointObserver: BreakpointObserver) {
+    _breakpointObserver.observe(Breakpoints.Handset).subscribe(result => {
+      this.isHandsetLayout = result.matches;
+    });
+  }
 
   async ngOnInit() {
     const srcChartData = (await this._stockService.getChart(this.symbol)) as any[];

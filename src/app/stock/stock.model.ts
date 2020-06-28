@@ -18,4 +18,6 @@ export interface Quote {
     week52High: number;
     week52Low: number;
     ytdChange: number;
+    latestUpdate: number;
+    latestSource: string;
 }

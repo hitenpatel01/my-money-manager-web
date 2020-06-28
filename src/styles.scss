@@ -63,29 +63,36 @@ body {
     margin: 0;
     font-size: 16px;
     line-height: 23px;
+    flex-direction: row;
 }
 .mat-body {
     font-size: 16px !important;
     line-height: 23px !important;
 }
+
+.handsetLayout {
+    flex-direction: column;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
-  }
+    height: 10px;
+}
   
-  /* Track */
-  ::-webkit-scrollbar-track {
+/* Track */
+::-webkit-scrollbar-track {
     background: #f1f1f1;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 10px;
 
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
     background: #555;
-  }
+}

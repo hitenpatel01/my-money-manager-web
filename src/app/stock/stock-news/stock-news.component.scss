@@ -1,7 +1,18 @@
 .stock-news-container {
     display: flex;
-    margin: 10px 0;
+    margin: 10px 0 10px;
 }
 .stock-news-item {
-    margin: 10px 0 0 0;
+    flex: 0 0 450px;
+    margin-left: 10px;
+}
+.stock-news-item:first-child {
+    margin-left: 0;
+}
+.handsetLayout>.stock-news-item {
+    margin-top: 10px;
+    margin-left: 0;
+}
+.handsetLayout>.stock-news-item:first-child {
+    margin-top: 0;
 }

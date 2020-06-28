@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AngularMaterialWrapperModule } from './angular-material-wrapper';
 
-import { GoogleChartsModule } from 'angular-google-charts';
+import { GoogleChartsModule, ScriptLoaderService } from 'angular-google-charts';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -55,11 +55,12 @@ import { StockPriceComponent } from './stock/stock-price/stock-price.component';
     LayoutModule,
     FormsModule,
     AngularMaterialWrapperModule,
-    GoogleChartsModule,
+    GoogleChartsModule.forRoot(),
     AppRoutingModule,
     CoreModule
   ],
   providers: [
+    ScriptLoaderService
   ],
   bootstrap: [AppComponent]
 })
